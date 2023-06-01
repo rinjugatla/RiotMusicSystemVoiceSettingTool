@@ -35,7 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.SystemVoiceRegisterName_TextBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.SystemVoiceDirectoryBrowse_Button = new System.Windows.Forms.Button();
             this.SystemVoiceRegister_Button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -103,14 +103,14 @@
             this.SystemVoiceRegisterName_TextBox.Size = new System.Drawing.Size(480, 19);
             this.SystemVoiceRegisterName_TextBox.TabIndex = 3;
             // 
-            // button1
+            // SystemVoiceDirectoryBrowse_Button
             // 
-            this.button1.Location = new System.Drawing.Point(501, 36);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "参照";
-            this.button1.UseVisualStyleBackColor = true;
+            this.SystemVoiceDirectoryBrowse_Button.Location = new System.Drawing.Point(501, 36);
+            this.SystemVoiceDirectoryBrowse_Button.Name = "SystemVoiceDirectoryBrowse_Button";
+            this.SystemVoiceDirectoryBrowse_Button.Size = new System.Drawing.Size(75, 23);
+            this.SystemVoiceDirectoryBrowse_Button.TabIndex = 5;
+            this.SystemVoiceDirectoryBrowse_Button.Text = "参照";
+            this.SystemVoiceDirectoryBrowse_Button.UseVisualStyleBackColor = true;
             // 
             // SystemVoiceRegister_Button
             // 
@@ -127,7 +127,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 120);
             this.Controls.Add(this.SystemVoiceRegister_Button);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.SystemVoiceDirectoryBrowse_Button);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.SystemVoiceRegisterName_TextBox);
@@ -151,7 +151,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox SystemVoiceRegisterName_TextBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button SystemVoiceDirectoryBrowse_Button;
         private System.Windows.Forms.Button SystemVoiceRegister_Button;
     }
 }
