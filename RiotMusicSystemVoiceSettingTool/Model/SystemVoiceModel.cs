@@ -70,6 +70,14 @@ namespace RiotMusicSystemVoiceSettingTool.Model
         public string FullName { get; private set; }
         /// <summary>ファイル名用の短い名前</summary>
         private string ShortName { get; set; }
+        /// <summary>販売URL</summary>
+        public string StoreUrl { get; private set; }
+
+        public override string ToString()
+        {
+            if(Actor == ActorType.Cocoa || Actor == ActorType.Iori) { return $"(未対応){FullName}"; }
+            return FullName;
+        }
         
         /// <param name="actor">ボイス担当者</param>
         public SystemVoiceModel(ActorType actor)
@@ -77,6 +85,8 @@ namespace RiotMusicSystemVoiceSettingTool.Model
             Actor = actor;
 
             InitFullName();
+            InitShortName();
+            InitStoreUrl();
         }
 
         /// <summary>フルネームを設定</summary>
@@ -109,6 +119,25 @@ namespace RiotMusicSystemVoiceSettingTool.Model
                 case ActorType.Anko:
                     ShortName = "杏子"; break;
             }
+        }
+
+        /// <summary>販売URLを設定</summary>
+        private void InitStoreUrl()
+        {
+            string baseUrl = "https://riotmusic.store/collections/2305-bw-system-voice/products/";
+            string postfix = "";
+            switch (Actor)
+            {
+                case ActorType.Cocoa:
+                    postfix = "2305-bw-system-voice-cocoa"; break;
+                case ActorType.Iori:
+                    postfix = "2305-bw-systemu-voice-iori";  break;
+                case ActorType.Miona:
+                    postfix = "2305-bw-system-voice-miona";  break;
+                case ActorType.Anko:
+                    postfix = "2305-bw-system-voice-anko";  break;
+            }
+            StoreUrl = baseUrl + postfix;
         }
 
         /// <summary>ボイスファイル名を取得</summary>
