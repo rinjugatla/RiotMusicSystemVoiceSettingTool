@@ -16,6 +16,12 @@ namespace RiotMusicSystemVoiceSettingTool
         public Form1()
         {
             InitializeComponent();
+            InitForm();
+        }
+
+        private void InitForm()
+        {
+            SystemVoiceSelect_ComboBox.SelectedIndex = 0;
         }
 
         private void SystemVoiceDirectoryBrowse_Button_Click(object sender, EventArgs e)

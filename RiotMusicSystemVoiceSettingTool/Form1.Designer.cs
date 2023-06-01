@@ -41,6 +41,7 @@
             // 
             // SystemVoiceSelect_ComboBox
             // 
+            this.SystemVoiceSelect_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SystemVoiceSelect_ComboBox.FormattingEnabled = true;
             this.SystemVoiceSelect_ComboBox.Items.AddRange(new object[] {
             "皇美緒奈 システムボイス",
