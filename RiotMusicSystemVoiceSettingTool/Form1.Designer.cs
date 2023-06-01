@@ -47,6 +47,7 @@
             this.SystemVoiceSelect_ComboBox.Name = "SystemVoiceSelect_ComboBox";
             this.SystemVoiceSelect_ComboBox.Size = new System.Drawing.Size(399, 20);
             this.SystemVoiceSelect_ComboBox.TabIndex = 0;
+            this.SystemVoiceSelect_ComboBox.SelectedIndexChanged += new System.EventHandler(this.SystemVoiceSelect_ComboBox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -66,6 +67,7 @@
             this.SystemVoiceSele_LinkLabel.TabIndex = 2;
             this.SystemVoiceSele_LinkLabel.TabStop = true;
             this.SystemVoiceSele_LinkLabel.Text = "販売先ページ";
+            this.SystemVoiceSele_LinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SystemVoiceSele_LinkLabel_LinkClicked);
             // 
             // SystemVoiceDirectory_TextBox
             // 
