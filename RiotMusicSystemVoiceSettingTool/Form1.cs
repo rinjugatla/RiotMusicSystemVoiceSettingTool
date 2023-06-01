@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,17 @@ namespace RiotMusicSystemVoiceSettingTool
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void SystemVoiceDirectoryBrowse_Button_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new CommonOpenFileDialog("システムボイスフォルダを選択") { IsFolderPicker = true })
+            {
+                var isOk = dialog.ShowDialog() == CommonFileDialogResult.Ok;
+                if (!isOk) { return; }
+
+                SystemVoiceDirectory_TextBox.Text = dialog.FileName;
+            }
         }
     }
 }

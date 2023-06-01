@@ -111,6 +111,7 @@
             this.SystemVoiceDirectoryBrowse_Button.TabIndex = 5;
             this.SystemVoiceDirectoryBrowse_Button.Text = "参照";
             this.SystemVoiceDirectoryBrowse_Button.UseVisualStyleBackColor = true;
+            this.SystemVoiceDirectoryBrowse_Button.Click += new System.EventHandler(this.SystemVoiceDirectoryBrowse_Button_Click);
             // 
             // SystemVoiceRegister_Button
             // 
