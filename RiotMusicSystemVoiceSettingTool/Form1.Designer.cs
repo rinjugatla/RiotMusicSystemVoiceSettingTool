@@ -43,11 +43,6 @@
             // 
             this.SystemVoiceSelect_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SystemVoiceSelect_ComboBox.FormattingEnabled = true;
-            this.SystemVoiceSelect_ComboBox.Items.AddRange(new object[] {
-            "皇美緒奈 システムボイス",
-            "朝倉杏子 システムボイス",
-            "（未対応）道明寺ここあ システムボイス",
-            "（未対応）松永依織 システムボイス"});
             this.SystemVoiceSelect_ComboBox.Location = new System.Drawing.Point(96, 12);
             this.SystemVoiceSelect_ComboBox.Name = "SystemVoiceSelect_ComboBox";
             this.SystemVoiceSelect_ComboBox.Size = new System.Drawing.Size(399, 20);
@@ -116,7 +111,7 @@
             // 
             // SystemVoiceRegister_Button
             // 
-            this.SystemVoiceRegister_Button.Location = new System.Drawing.Point(501, 89);
+            this.SystemVoiceRegister_Button.Location = new System.Drawing.Point(507, 317);
             this.SystemVoiceRegister_Button.Name = "SystemVoiceRegister_Button";
             this.SystemVoiceRegister_Button.Size = new System.Drawing.Size(75, 23);
             this.SystemVoiceRegister_Button.TabIndex = 6;
@@ -127,7 +122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 120);
+            this.ClientSize = new System.Drawing.Size(594, 352);
             this.Controls.Add(this.SystemVoiceRegister_Button);
             this.Controls.Add(this.SystemVoiceDirectoryBrowse_Button);
             this.Controls.Add(this.label3);

@@ -1,4 +1,5 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using RiotMusicSystemVoiceSettingTool.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static RiotMusicSystemVoiceSettingTool.Model.SystemVoiceModel;
 
 namespace RiotMusicSystemVoiceSettingTool
 {
@@ -21,6 +23,12 @@ namespace RiotMusicSystemVoiceSettingTool
 
         private void InitForm()
         {
+            foreach (ActorType type in Enum.GetValues(typeof(ActorType)))
+            {
+                var model = new SystemVoiceModel(type);
+                SystemVoiceSelect_ComboBox.Items.Add(model);
+            }
+
             SystemVoiceSelect_ComboBox.SelectedIndex = 0;
         }
 
