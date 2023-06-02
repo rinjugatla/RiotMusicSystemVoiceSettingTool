@@ -113,9 +113,9 @@
             // 
             // SystemVoiceRegister_Button
             // 
-            this.SystemVoiceRegister_Button.Location = new System.Drawing.Point(507, 317);
+            this.SystemVoiceRegister_Button.Location = new System.Drawing.Point(438, 89);
             this.SystemVoiceRegister_Button.Name = "SystemVoiceRegister_Button";
-            this.SystemVoiceRegister_Button.Size = new System.Drawing.Size(75, 23);
+            this.SystemVoiceRegister_Button.Size = new System.Drawing.Size(138, 23);
             this.SystemVoiceRegister_Button.TabIndex = 6;
             this.SystemVoiceRegister_Button.Text = "登録";
             this.SystemVoiceRegister_Button.UseVisualStyleBackColor = true;
@@ -124,7 +124,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 352);
+            this.ClientSize = new System.Drawing.Size(594, 125);
             this.Controls.Add(this.SystemVoiceRegister_Button);
             this.Controls.Add(this.SystemVoiceDirectoryBrowse_Button);
             this.Controls.Add(this.label3);
