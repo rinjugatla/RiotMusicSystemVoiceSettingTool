@@ -118,7 +118,7 @@
             this.SystemVoiceRegisterName_PlaceholderTextBox1.Location = new System.Drawing.Point(96, 63);
             this.SystemVoiceRegisterName_PlaceholderTextBox1.Name = "SystemVoiceRegisterName_PlaceholderTextBox1";
             this.SystemVoiceRegisterName_PlaceholderTextBox1.PlaceholderColor = System.Drawing.Color.Empty;
-            this.SystemVoiceRegisterName_PlaceholderTextBox1.PlaceholderText = "英数字で入力してください";
+            this.SystemVoiceRegisterName_PlaceholderTextBox1.PlaceholderText = "半角英数字で入力してください";
             this.SystemVoiceRegisterName_PlaceholderTextBox1.Size = new System.Drawing.Size(480, 19);
             this.SystemVoiceRegisterName_PlaceholderTextBox1.TabIndex = 7;
             // 
