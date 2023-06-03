@@ -34,9 +34,9 @@
             this.SystemVoiceDirectory_TextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.SystemVoiceRegisterName_TextBox = new System.Windows.Forms.TextBox();
             this.SystemVoiceDirectoryBrowse_Button = new System.Windows.Forms.Button();
             this.SystemVoiceRegister_Button = new System.Windows.Forms.Button();
+            this.SystemVoiceRegisterName_PlaceholderTextBox1 = new RiotMusicSystemVoiceSettingTool.CustomControll.PlaceholderTextBox();
             this.SuspendLayout();
             // 
             // SystemVoiceSelect_ComboBox
@@ -94,13 +94,6 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "サウンド登録名";
             // 
-            // SystemVoiceRegisterName_TextBox
-            // 
-            this.SystemVoiceRegisterName_TextBox.Location = new System.Drawing.Point(96, 64);
-            this.SystemVoiceRegisterName_TextBox.Name = "SystemVoiceRegisterName_TextBox";
-            this.SystemVoiceRegisterName_TextBox.Size = new System.Drawing.Size(480, 19);
-            this.SystemVoiceRegisterName_TextBox.TabIndex = 3;
-            // 
             // SystemVoiceDirectoryBrowse_Button
             // 
             this.SystemVoiceDirectoryBrowse_Button.Location = new System.Drawing.Point(501, 36);
@@ -120,16 +113,25 @@
             this.SystemVoiceRegister_Button.Text = "登録";
             this.SystemVoiceRegister_Button.UseVisualStyleBackColor = true;
             // 
+            // SystemVoiceRegisterName_PlaceholderTextBox1
+            // 
+            this.SystemVoiceRegisterName_PlaceholderTextBox1.Location = new System.Drawing.Point(96, 63);
+            this.SystemVoiceRegisterName_PlaceholderTextBox1.Name = "SystemVoiceRegisterName_PlaceholderTextBox1";
+            this.SystemVoiceRegisterName_PlaceholderTextBox1.PlaceholderColor = System.Drawing.Color.Empty;
+            this.SystemVoiceRegisterName_PlaceholderTextBox1.PlaceholderText = "英数字で入力してください";
+            this.SystemVoiceRegisterName_PlaceholderTextBox1.Size = new System.Drawing.Size(480, 19);
+            this.SystemVoiceRegisterName_PlaceholderTextBox1.TabIndex = 7;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 125);
+            this.Controls.Add(this.SystemVoiceRegisterName_PlaceholderTextBox1);
             this.Controls.Add(this.SystemVoiceRegister_Button);
             this.Controls.Add(this.SystemVoiceDirectoryBrowse_Button);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.SystemVoiceRegisterName_TextBox);
             this.Controls.Add(this.SystemVoiceDirectory_TextBox);
             this.Controls.Add(this.SystemVoiceSele_LinkLabel);
             this.Controls.Add(this.label1);
@@ -149,9 +151,9 @@
         private System.Windows.Forms.TextBox SystemVoiceDirectory_TextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox SystemVoiceRegisterName_TextBox;
         private System.Windows.Forms.Button SystemVoiceDirectoryBrowse_Button;
         private System.Windows.Forms.Button SystemVoiceRegister_Button;
+        private CustomControll.PlaceholderTextBox SystemVoiceRegisterName_PlaceholderTextBox1;
     }
 }
 
