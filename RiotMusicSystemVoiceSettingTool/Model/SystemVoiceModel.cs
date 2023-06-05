@@ -98,6 +98,24 @@ namespace RiotMusicSystemVoiceSettingTool.Model
             StoreUrl = baseUrl + postfix;
         }
 
+        /// <summary>システムボイスで対応済みのサウンドを取得</summary>
+        public List<WindowsSoundType> ExistsVoiceWindowsSoundType()
+        {
+            var types = new List<WindowsSoundType>();
+            foreach (WindowsSoundType type in Enum.GetValues(typeof(WindowsSoundType)))
+            {
+                try
+                {
+                    var _ = VoiceFileName(type);
+                    types.Add(type);
+                }
+                catch (Exception) { }
+                
+            }
+
+            return types;
+        }
+
         /// <summary>ボイスファイル名を取得</summary>
         /// <param name="sound">ボイス種類</param>
         /// <exception cref="ArgumentException">未対応のボイス</exception>
@@ -142,6 +160,24 @@ namespace RiotMusicSystemVoiceSettingTool.Model
                 default:
                     throw new ArgumentException("未対応のボイス種類");
             }
+        }
+
+        /// <summary>システムボイスで対応済みのサウンドを取得</summary>
+        public List<ExplorerSoundType> ExistsVoiceExplorerSoundType()
+        {
+            var types = new List<ExplorerSoundType>();
+            foreach (ExplorerSoundType type in Enum.GetValues(typeof(ExplorerSoundType)))
+            {
+                try
+                {
+                    var _ = VoiceFileName(type);
+                    types.Add(type);
+                }
+                catch (Exception) { }
+
+            }
+
+            return types;
         }
 
         /// <summary>ボイスファイル名を取得</summary>
