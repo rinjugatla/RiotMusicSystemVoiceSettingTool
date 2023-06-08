@@ -1,5 +1,4 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
-using RiotMusicSystemVoiceSettingTool.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,6 +44,7 @@ namespace RiotMusicSystemVoiceSettingTool
             if(current == null) { return; }
 
             CurrentSelectVoice = current;
+            SystemVoiceRegisterName_PlaceholderTextBox1.Text = current.DefaultRegistryKey;
         }
 
         /// <summary>ボイス販売ページに遷移</summary>
