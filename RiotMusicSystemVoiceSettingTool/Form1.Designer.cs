@@ -36,7 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.SystemVoiceDirectoryBrowse_Button = new System.Windows.Forms.Button();
             this.SystemVoiceRegister_Button = new System.Windows.Forms.Button();
-            this.SystemVoiceRegisterName_PlaceholderTextBox1 = new RiotMusicSystemVoiceSettingTool.CustomControll.PlaceholderTextBox();
+            this.SystemVoiceRegisterName_PlaceholderTextBox = new RiotMusicSystemVoiceSettingTool.CustomControll.PlaceholderTextBox();
             this.SuspendLayout();
             // 
             // SystemVoiceSelect_ComboBox
@@ -113,21 +113,21 @@
             this.SystemVoiceRegister_Button.Text = "登録";
             this.SystemVoiceRegister_Button.UseVisualStyleBackColor = true;
             // 
-            // SystemVoiceRegisterName_PlaceholderTextBox1
+            // SystemVoiceRegisterName_PlaceholderTextBox
             // 
-            this.SystemVoiceRegisterName_PlaceholderTextBox1.Location = new System.Drawing.Point(96, 63);
-            this.SystemVoiceRegisterName_PlaceholderTextBox1.Name = "SystemVoiceRegisterName_PlaceholderTextBox1";
-            this.SystemVoiceRegisterName_PlaceholderTextBox1.PlaceholderColor = System.Drawing.Color.Empty;
-            this.SystemVoiceRegisterName_PlaceholderTextBox1.PlaceholderText = "半角英数字で入力してください";
-            this.SystemVoiceRegisterName_PlaceholderTextBox1.Size = new System.Drawing.Size(480, 19);
-            this.SystemVoiceRegisterName_PlaceholderTextBox1.TabIndex = 7;
+            this.SystemVoiceRegisterName_PlaceholderTextBox.Location = new System.Drawing.Point(96, 63);
+            this.SystemVoiceRegisterName_PlaceholderTextBox.Name = "SystemVoiceRegisterName_PlaceholderTextBox";
+            this.SystemVoiceRegisterName_PlaceholderTextBox.PlaceholderColor = System.Drawing.Color.Empty;
+            this.SystemVoiceRegisterName_PlaceholderTextBox.PlaceholderText = "半角英数字で入力してください";
+            this.SystemVoiceRegisterName_PlaceholderTextBox.Size = new System.Drawing.Size(480, 19);
+            this.SystemVoiceRegisterName_PlaceholderTextBox.TabIndex = 7;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 125);
-            this.Controls.Add(this.SystemVoiceRegisterName_PlaceholderTextBox1);
+            this.Controls.Add(this.SystemVoiceRegisterName_PlaceholderTextBox);
             this.Controls.Add(this.SystemVoiceRegister_Button);
             this.Controls.Add(this.SystemVoiceDirectoryBrowse_Button);
             this.Controls.Add(this.label3);
@@ -153,7 +153,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button SystemVoiceDirectoryBrowse_Button;
         private System.Windows.Forms.Button SystemVoiceRegister_Button;
-        private CustomControll.PlaceholderTextBox SystemVoiceRegisterName_PlaceholderTextBox1;
+        private CustomControll.PlaceholderTextBox SystemVoiceRegisterName_PlaceholderTextBox;
     }
 }
 
