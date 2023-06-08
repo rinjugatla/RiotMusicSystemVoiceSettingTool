@@ -10,7 +10,11 @@ namespace RiotMusicSystemVoiceSettingTool.Model.RiotMusicSysmteVoice
     {
         public IoriModel()
         {
-            base.Actor = ActorType.Iori;
+            Actor = ActorType.Iori;
+            FullName = "松永依織";
+            ShortName = "依織";
+            StoreUrlPostfix = "2305-bw-systemu-voice-iori";
+            DefaultRegistryKey = "iori";
         }
     }
 }

@@ -10,7 +10,11 @@ namespace RiotMusicSystemVoiceSettingTool.Model.RiotMusicSysmteVoice
     {
         public CocoaModel()
         {
-            base.Actor = ActorType.Cocoa;
+            Actor = ActorType.Cocoa;
+            FullName = "道明寺ここあ";
+            ShortName = "ここあ";
+            StoreUrlPostfix = "2305-bw-system-voice-cocoa";
+            DefaultRegistryKey = "cocoa";
         }
     }
 }

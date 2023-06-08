@@ -25,66 +25,23 @@ namespace RiotMusicSystemVoiceSettingTool.Model.RiotMusicSysmteVoice
         /// <summary>ボイス担当者</summary>
         public ActorType Actor { get; protected set; }
         /// <summary>フルネーム</summary>
-        public string FullName
-        {
-            get
-            {
-                switch (Actor)
-                {
-                    case ActorType.Cocoa:
-                        return "道明寺ここあ";
-                    case ActorType.Iori:
-                        return "松永依織";
-                    case ActorType.Miona:
-                        return "皇美緒奈";
-                    case ActorType.Anko:
-                        return "朝倉杏子";
-                    default:
-                        return "";
-                }
-            }
-        }
+        public string FullName { get; protected set; }
         /// <summary>ファイル名用の短い名前</summary>
-        public string ShortName
+        public string ShortName { get; protected set; }
+        /// <summary>販売URL接尾語</summary>
+        protected string StoreUrlPostfix { get; set; }
+        /// <summary>販売URL</summary>
+        public string StoreUrl
         {
             get
             {
-                switch (Actor)
-                {
-                    case ActorType.Cocoa:
-                        return "ここあ";
-                    case ActorType.Iori:
-                        return "依織";
-                    case ActorType.Miona:
-                        return "美緒奈";
-                    case ActorType.Anko:
-                        return "杏子";
-                    default:
-                        return "";
-                }
-            }
-        }
-        /// <summary>販売URL</summary>
-        public string StoreUrl { 
-            get
-            {
-                string baseUrl = "https://riotmusic.store/collections/2305-bw-system-voice/products/";
-                string postfix = "";
-                switch (Actor)
-                {
-                    case ActorType.Cocoa:
-                        postfix = "2305-bw-system-voice-cocoa"; break;
-                    case ActorType.Iori:
-                        postfix = "2305-bw-systemu-voice-iori"; break;
-                    case ActorType.Miona:
-                        postfix = "2305-bw-system-voice-miona"; break;
-                    case ActorType.Anko:
-                        postfix = "2305-bw-system-voice-anko"; break;
-                }
-                string url = baseUrl + postfix;
+                string prefix = "https://riotmusic.store/collections/2305-bw-system-voice/products/";
+                string url = prefix + StoreUrlPostfix;
                 return url;
             }
         }
+        /// <summary>既定のレジストリキー</summary>
+        public string DefaultRegistryKey { get; protected set; }
 
         public override string ToString()
         {
