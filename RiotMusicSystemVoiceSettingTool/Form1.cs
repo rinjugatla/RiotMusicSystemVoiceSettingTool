@@ -10,13 +10,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static RiotMusicSystemVoiceSettingTool.Model.SystemVoiceModel;
+using RiotMusicSystemVoiceSettingTool.Model.RiotMusicSysmteVoice;
 
 namespace RiotMusicSystemVoiceSettingTool
 {
     public partial class Form1 : Form
     {
-        private SystemVoiceModel CurrentSelectVoice = null;
+        private ActorBaseModel CurrentSelectVoice = null;
 
         public Form1()
         {
@@ -27,11 +27,12 @@ namespace RiotMusicSystemVoiceSettingTool
         /// <summary>フォーム初期化</summary>
         private void InitForm()
         {
-            foreach (ActorType type in Enum.GetValues(typeof(ActorType)))
-            {
-                var model = new SystemVoiceModel(type);
-                SystemVoiceSelect_ComboBox.Items.Add(model);
-            }
+            SystemVoiceSelect_ComboBox.Items.AddRange(new ActorBaseModel[]{
+                new CocoaModel(),
+                new IoriModel(),
+                new MionaModel(),
+                new AnkoModel()
+            });
 
             SystemVoiceSelect_ComboBox.SelectedIndex = 0;
         }
@@ -40,7 +41,7 @@ namespace RiotMusicSystemVoiceSettingTool
         private void SystemVoiceSelect_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var combo = sender as ComboBox;
-            var current = combo.SelectedItem as SystemVoiceModel;
+            var current = combo.SelectedItem as ActorBaseModel;
             if(current == null) { return; }
 
             CurrentSelectVoice = current;

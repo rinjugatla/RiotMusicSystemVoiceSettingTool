@@ -67,7 +67,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\SystemVoiceModel.cs" />
+    <Compile Include="Model\RiotMusicSysmteVoice\AnkoModel.cs" />
+    <Compile Include="Model\RiotMusicSysmteVoice\ActorBaseModel.cs" />
+    <Compile Include="Model\RiotMusicSysmteVoice\CocoaModel.cs" />
+    <Compile Include="Model\RiotMusicSysmteVoice\IoriModel.cs" />
+    <Compile Include="Model\RiotMusicSysmteVoice\MionaModel.cs" />
     <Compile Include="Model\SystemSoundModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
