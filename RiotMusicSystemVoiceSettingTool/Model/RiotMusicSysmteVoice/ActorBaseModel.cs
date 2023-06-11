@@ -57,7 +57,7 @@ namespace RiotMusicSystemVoiceSettingTool.Model.RiotMusicSysmteVoice
             {
                 try
                 {
-                    var _ = VoiceFileName(type);
+                    VoiceFileName(type);
                     types.Add(type);
                 }
                 catch (Exception) { }
@@ -121,7 +121,7 @@ namespace RiotMusicSystemVoiceSettingTool.Model.RiotMusicSysmteVoice
             {
                 try
                 {
-                    var _ = VoiceFileName(type);
+                    VoiceFileName(type);
                     types.Add(type);
                 }
                 catch (Exception) { }
