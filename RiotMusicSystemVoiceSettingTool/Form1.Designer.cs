@@ -112,6 +112,7 @@
             this.SystemVoiceRegister_Button.TabIndex = 6;
             this.SystemVoiceRegister_Button.Text = "登録";
             this.SystemVoiceRegister_Button.UseVisualStyleBackColor = true;
+            this.SystemVoiceRegister_Button.Click += new System.EventHandler(this.SystemVoiceRegister_Button_Click);
             // 
             // SystemVoiceRegisterName_PlaceholderTextBox
             // 

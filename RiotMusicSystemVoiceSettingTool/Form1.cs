@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using RiotMusicSystemVoiceSettingTool.Model.RiotMusicSysmteVoice;
+using RiotMusicSystemVoiceSettingTool.Controller;
 
 namespace RiotMusicSystemVoiceSettingTool
 {
@@ -65,6 +66,13 @@ namespace RiotMusicSystemVoiceSettingTool
 
                 SystemVoiceDirectory_TextBox.Text = dialog.FileName;
             }
+        }
+
+        /// <summary>システムボイスを登録</summary>
+        private void SystemVoiceRegister_Button_Click(object sender, EventArgs e)
+        {
+            var registryController = new SystemVoiceRegistryController();
+            registryController.ReadRegistrySetting();
         }
     }
 }

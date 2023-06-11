@@ -58,6 +58,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\SystemVoiceRegistryController.cs" />
     <Compile Include="CustomControll\PlaceholderTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -67,6 +68,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Registry\ExplorerSystemSoundRegistryModel.cs" />
+    <Compile Include="Model\Registry\RegistryModel.cs" />
+    <Compile Include="Model\Registry\SystemSoundRegistriesModel.cs" />
+    <Compile Include="Model\Registry\SystemSoundRegistryBaseModel.cs" />
+    <Compile Include="Model\Registry\WindwsSystemSoundRegistryModel.cs" />
     <Compile Include="Model\RiotMusicSysmteVoice\AnkoModel.cs" />
     <Compile Include="Model\RiotMusicSysmteVoice\ActorBaseModel.cs" />
     <Compile Include="Model\RiotMusicSysmteVoice\CocoaModel.cs" />
