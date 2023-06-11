@@ -142,7 +142,7 @@ namespace RiotMusicSystemVoiceSettingTool.Model
                 case WindowsSoundType.ProgramStart:
                     key = "Open"; break;
                 case WindowsSoundType.MessageQuestion:
-                    key = "MessageQuestion"; break;
+                    key = "SystemQuestion"; break;
                 case WindowsSoundType.MessageInfomation:
                     key = "SystemAsterisk"; break;
                 case WindowsSoundType.MessageWarning:
@@ -168,7 +168,7 @@ namespace RiotMusicSystemVoiceSettingTool.Model
                 case WindowsSoundType.NewFaxNotification:
                     key = "FaxBeep"; break;
                 case WindowsSoundType.NewMailNotification:
-                    key = "Mail"; break;
+                    key = "Notification.Mail"; break;
                 case WindowsSoundType.MaxWIndowSize:
                     key = "Maximize"; break;
                 case WindowsSoundType.MinWindowSize:
@@ -184,7 +184,7 @@ namespace RiotMusicSystemVoiceSettingTool.Model
         }
 
         /// <summary>レジストリパスを取得</summary>
-        public string RegistryPath(ExplorerSoundType type)
+        public static string RegistryPath(ExplorerSoundType type)
         {
             string @base = @"AppEvents\Schemes\Apps\Explorer\";
             string key = "";
