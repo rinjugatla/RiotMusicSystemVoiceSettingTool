@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using RiotMusicSystemVoiceSettingTool.Model.RiotMusicSysmteVoice;
 using RiotMusicSystemVoiceSettingTool.Controller;
 using System.IO;
+using Microsoft.Win32;
 
 namespace RiotMusicSystemVoiceSettingTool
 {
@@ -81,21 +82,15 @@ namespace RiotMusicSystemVoiceSettingTool
             var registryController = new SystemVoiceRegistryController();
             registryController.ReadRegistrySetting();
 
+
             var directoryPath = SystemVoiceDirectory_TextBox.Text;
-            if (!Directory.Exists(directoryPath))
-            {
-                MessageBox.Show("システムボイスフォルダが存在しません。", FormName,
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            bool isValidDirectoryPath = IsValidSystemVoiceDirectryPath(directoryPath);
+            if (!isValidDirectoryPath) { return; }
+
 
             string registryKeyName = SystemVoiceRegisterName_PlaceholderTextBox.Text;
-            if (registryKeyName.Length == 0)
-            {
-                MessageBox.Show("サウンド項目名が未設定です。名前を入力してください。", FormName,
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            bool isVliadRegistryKeyName = IsValidRegistryKeyName(registryKeyName);
+            if (!isVliadRegistryKeyName) { return; }
 
             bool isValidSystemVoiceFile = IsValidSystemVoiceFileCount(directoryPath);
             if (!isValidSystemVoiceFile) { return; }
@@ -106,6 +101,28 @@ namespace RiotMusicSystemVoiceSettingTool
 
             MessageBox.Show("システムボイスの登録が完了しました。", "システムボイスの登録", 
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>システムボイスフォルダパスを検証</summary>
+        /// <returns>処理を継続するか</returns>
+        private bool IsValidSystemVoiceDirectryPath(string directoryPath)
+        {
+            if (Directory.Exists(directoryPath)) { return true; }
+
+            MessageBox.Show("システムボイスフォルダが存在しません。", FormName,
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+
+        /// <summary>レジストリ登録キーを検証</summary>
+        /// <returns>処理を継続するか</returns>
+        private bool IsValidRegistryKeyName(string name)
+        {
+            if (name.Length != 0) { return true; }
+
+            MessageBox.Show("サウンド項目名が未設定です。名前を入力してください。", FormName,
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
         }
 
         /// <summary>ボイスファイルを検証</summary>
