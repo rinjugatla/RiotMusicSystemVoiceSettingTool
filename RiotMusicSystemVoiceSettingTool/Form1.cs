@@ -13,6 +13,7 @@ using RiotMusicSystemVoiceSettingTool.Model.RiotMusicSysmteVoice;
 using RiotMusicSystemVoiceSettingTool.Controller;
 using System.IO;
 using Microsoft.Win32;
+using System.Reflection;
 
 namespace RiotMusicSystemVoiceSettingTool
 {
@@ -26,7 +27,15 @@ namespace RiotMusicSystemVoiceSettingTool
             InitializeComponent();
 
             FormName = this.Text;
+
+            AddAssemblyVersionToTitle();
             InitForm();
+        }
+
+        private void AddAssemblyVersionToTitle()
+        {
+            var assembly = Assembly.GetExecutingAssembly().GetName();
+            this.Text += $" {assembly.Version}";
         }
 
         /// <summary>フォーム初期化</summary>
