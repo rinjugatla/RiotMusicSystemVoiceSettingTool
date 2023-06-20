@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Forms;
 using static RiotMusicSystemVoiceSettingTool.Model.Registry.SystemSoundRegistryBaseModel;
 using static RiotMusicSystemVoiceSettingTool.Model.SystemSoundModel;
 
@@ -50,7 +50,7 @@ namespace RiotMusicSystemVoiceSettingTool.Controller
             catch (Exception ex)
             {
                 MessageBox.Show($"サウンド項目名の登録に失敗しました。\r\n詳細: {ex.Message}", "サウンド項目名の登録", 
-                    MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             RegistRegistryKeys(soundItemName);
@@ -161,7 +161,7 @@ namespace RiotMusicSystemVoiceSettingTool.Controller
             {
                 string message = string.Join("\r\n", errors);
                 MessageBox.Show($"以下のレジストリキーの登録に失敗しました。\r\n{message}", "レジストリキーの登録",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -213,8 +213,8 @@ namespace RiotMusicSystemVoiceSettingTool.Controller
             if (errors.Any())
             {
                 string message = string.Join("\n", errors);
-                MessageBox.Show($"以下の音声ファイルパスの登録に失敗しました。\r\n{message}", "音声ファイルパスの登録", 
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show($"以下の音声ファイルパスの登録に失敗しました。\r\n{message}", "音声ファイルパスの登録",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
