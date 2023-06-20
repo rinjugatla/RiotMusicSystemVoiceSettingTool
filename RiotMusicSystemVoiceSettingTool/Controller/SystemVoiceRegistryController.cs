@@ -1,10 +1,14 @@
 ﻿using Microsoft.Win32;
+using RiotMusicSystemVoiceSettingTool.Model;
 using RiotMusicSystemVoiceSettingTool.Model.Registry;
+using RiotMusicSystemVoiceSettingTool.Model.RiotMusicSysmteVoice;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using static RiotMusicSystemVoiceSettingTool.Model.SystemSoundModel;
 
 namespace RiotMusicSystemVoiceSettingTool.Controller
@@ -30,37 +34,129 @@ namespace RiotMusicSystemVoiceSettingTool.Controller
             SoundRegistries.ReadRegistrySeeting();
         }
 
-        ///// <summary>サウンド設定に登録済みの項目を取得</summary>
-        //public void GetRegisterdItemNames()
-        //{
-        //    RegistryKey registerdItemNameKey = Registry.CurrentUser.OpenSubKey(SystemVoiceItemNameBasePath, false);
-        //    _SystemVoiceRegisterdItemNames = registerdItemNameKey.GetSubKeyNames().ToList();
-        //}
+        /// <summary>システムボイスをレジストリに登録</summary>
+        /// <param name="directoryPath">システムボイス配置フォルダ</param>
+        /// <param name="soundItemName">サウンド選択項目名(mionaなど)</param>
+        /// <param name="model">ボイスモデル</param>
+        public void RegistSystemVoice(string directoryPath, string soundItemName, ActorBaseModel model)
+        {
+            try
+            {
+                RegistActorName(soundItemName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"サウンド項目名の登録に失敗しました。\r\n詳細: {ex.Message}", "サウンド項目名の登録", 
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
-        //public List<string> GetRegisterdSoundKeys()
-        //{
-        //    RegistryKey registerdItemNameKey = Registry.CurrentUser.OpenSubKey(@"AppEvents\Schemes\Apps\.Default", false);
-        //    var result = registerdItemNameKey.GetSubKeyNames().ToList();
-        //    return result;
-        //}
+            RegistRegistryKeys(soundItemName);
+            RegistSystemVoicePaths(directoryPath, soundItemName, model);
+        }
 
-        //public Dictionary<string, string> GetRegistedDefaultSound()
-        //{
-        //    var result = new Dictionary<string, string>();
+        /// <summary>サウンド選択項目を登録</summary>
+        private void RegistActorName(string soundItemName)
+        {
+            try
+            {
+                string registryPath = $@"AppEvents\Schemes\Names\{soundItemName}";
+                using (var key = Registry.CurrentUser.CreateSubKey(registryPath))
+                {
+                    key.SetValue(null, soundItemName);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
-        //    string basePath = @"AppEvents\Schemes\Apps\Explorer";
-        //    RegistryKey registerdItemNameKey = Registry.CurrentUser.OpenSubKey(basePath, false);
-        //    var keys = registerdItemNameKey.GetSubKeyNames();
-        //    foreach (var key in keys)
-        //    {
-        //        using (var subkey = Registry.CurrentUser.OpenSubKey($@"{basePath}\{key}\.Current", false))
-        //        {
-        //            var value = subkey.GetValue(DEFAULT_KEY) as string;
-        //            result.Add(key, value);
-        //        }
-        //    }
+        /// <summary>レジストリキーを作成</summary>
+        /// <param name="soundItemName">サウンド選択項目名(mionaなど)</param>
+        private void RegistRegistryKeys(string soundItemName)
+        {
+            List<string> errors = new List<string>();
+            foreach (WindowsSoundType type in Enum.GetValues(typeof(WindowsSoundType)))
+            {
+                try
+                {
+                    string registryPath = Path.Combine(RegistryPath(type), soundItemName);
+                    using (var key = Registry.CurrentUser.CreateSubKey(registryPath)) { };
+                }
+                catch (Exception ex)
+                {
+                    errors.Add($"{type} {ex.Message}");
+                }
+            }
 
-        //    return result;
-        //}
+            foreach (ExplorerSoundType type in Enum.GetValues(typeof(ExplorerSoundType)))
+            {
+                try
+                {
+                    string registryPath = Path.Combine(RegistryPath(type), soundItemName);
+                    using (var key = Registry.CurrentUser.CreateSubKey(registryPath)) { };
+                }
+                catch (Exception ex)
+                {
+                    errors.Add($"{type} {ex.Message}");
+                }
+            }
+
+            if (errors.Any())
+            {
+                string message = string.Join("\r\n", errors);
+                MessageBox.Show($"以下のレジストリキーの登録に失敗しました。\r\n{message}", "レジストリキーの登録",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        /// <summary>システムボイスをレジストリに登録</summary>
+        /// <param name="directoryPath">システムボイス配置フォルダ</param>
+        /// <param name="soundItemName">サウンド選択項目名(mionaなど)</param>
+        /// <param name="model">ボイスモデル</param>
+        private void RegistSystemVoicePaths(string directoryPath, string soundItemName, ActorBaseModel model)
+        {
+            List<string> errors = new List<string>();
+            foreach (WindowsSoundType type in model.ExistsVoiceWindowsSoundType())
+            {
+                string registryPath = Path.Combine(RegistryPath(type), soundItemName);
+                string filepath = Path.Combine(directoryPath, model.VoiceFileName(type));
+                try
+                {
+                    using (var key = Registry.CurrentUser.OpenSubKey(registryPath, true))
+                    {
+                        key.SetValue(null, filepath);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    errors.Add($"{type} {ex.Message}");
+                }
+            }
+
+            foreach (ExplorerSoundType type in model.ExistsVoiceExplorerSoundType())
+            {
+                string registryPath = Path.Combine(RegistryPath(type), soundItemName);
+                string filepath = Path.Combine(directoryPath, model.VoiceFileName(type));
+                try
+                {
+                    using (var key = Registry.CurrentUser.OpenSubKey(registryPath, true))
+                    {
+                        key.SetValue(null, filepath);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    errors.Add($"{type} {ex.Message}");
+                }
+            }
+
+            if (errors.Any())
+            {
+                string message = string.Join("\n", errors);
+                MessageBox.Show($"以下の音声ファイルパスの登録に失敗しました。\r\n{message}", "音声ファイルパスの登録", 
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
     }
 }

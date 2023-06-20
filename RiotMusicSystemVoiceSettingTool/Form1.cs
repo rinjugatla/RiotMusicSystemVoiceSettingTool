@@ -11,16 +11,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using RiotMusicSystemVoiceSettingTool.Model.RiotMusicSysmteVoice;
 using RiotMusicSystemVoiceSettingTool.Controller;
+using System.IO;
 
 namespace RiotMusicSystemVoiceSettingTool
 {
     public partial class Form1 : Form
     {
+        private string FormName = "";
         private ActorBaseModel CurrentSelectVoice = null;
 
         public Form1()
         {
             InitializeComponent();
+
+            FormName = this.Text;
             InitForm();
         }
 
@@ -73,6 +77,25 @@ namespace RiotMusicSystemVoiceSettingTool
         {
             var registryController = new SystemVoiceRegistryController();
             registryController.ReadRegistrySetting();
+
+            var directoryPath = SystemVoiceDirectory_TextBox.Text;
+            if (!Directory.Exists(directoryPath))
+            {
+                MessageBox.Show("システムボイスフォルダが存在しません。", FormName, 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string registryKeyName = SystemVoiceRegisterName_PlaceholderTextBox.Text;
+            if (registryKeyName.Length == 0)
+            {
+                MessageBox.Show("サウンド項目名が未設定です。名前を入力してください。", FormName,
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            
+            registryController.RegistSystemVoice(directoryPath, registryKeyName, CurrentSelectVoice);
         }
     }
 }
