@@ -81,7 +81,7 @@ namespace RiotMusicSystemVoiceSettingTool
             var directoryPath = SystemVoiceDirectory_TextBox.Text;
             if (!Directory.Exists(directoryPath))
             {
-                MessageBox.Show("システムボイスフォルダが存在しません。", FormName, 
+                MessageBox.Show("システムボイスフォルダが存在しません。", FormName,
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -96,6 +96,9 @@ namespace RiotMusicSystemVoiceSettingTool
 
             bool useDefaltSound = UseDefaultSystemSound_CheckBox.Checked;
             registryController.RegistSystemVoice(useDefaltSound, directoryPath, registryKeyName, CurrentSelectVoice);
+
+            MessageBox.Show("システムボイスの登録が完了しました。", "システムボイスの登録", 
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
