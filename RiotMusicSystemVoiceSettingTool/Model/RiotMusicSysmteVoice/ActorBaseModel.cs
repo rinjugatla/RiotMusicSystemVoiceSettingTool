@@ -49,6 +49,16 @@ namespace RiotMusicSystemVoiceSettingTool.Model.RiotMusicSysmteVoice
             return FullName;
         }
 
+        /// <summary>システムボイスファイル名一覧</summary>
+        public List<string> SystemVoiceFilenames()
+        {
+            var windowsFilenames = ExistsVoiceWindowsSoundType().Select(type => VoiceFileName(type));
+            var explorerFilenames = ExistsVoiceExplorerSoundType().Select(type => VoiceFileName(type));
+            var result = windowsFilenames.Concat(explorerFilenames).ToList();
+
+            return result;
+        }
+
         /// <summary>システムボイスで対応済みのサウンドを取得</summary>
         public List<WindowsSoundType> ExistsVoiceWindowsSoundType()
         {

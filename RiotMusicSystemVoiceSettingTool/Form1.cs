@@ -97,12 +97,33 @@ namespace RiotMusicSystemVoiceSettingTool
                 return;
             }
 
+            bool isValidSystemVoiceFile = IsValidSystemVoiceFileCount(directoryPath);
+            if (!isValidSystemVoiceFile) { return; }
+
             bool useDefaltSound = UseDefaultSystemSound_CheckBox.Checked;
             string error = registryController.RegistSystemVoice(useDefaltSound, directoryPath, registryKeyName, CurrentSelectVoice);
             ErrorLog_TextBox.Text = error;
 
             MessageBox.Show("システムボイスの登録が完了しました。", "システムボイスの登録", 
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>ボイスファイルを検証</summary>
+        /// <returns>処理を継続するか</returns> 
+        private bool IsValidSystemVoiceFileCount(string directoryPath)
+        {
+            var needFilenames = CurrentSelectVoice.SystemVoiceFilenames();
+            var existsFilenames = Directory.GetFiles(directoryPath).Select(path => Path.GetFileName(path));
+
+            // 不足しているファイル
+            var shortageFilenames = needFilenames.Where(need => !existsFilenames.Contains(need));
+            if (!shortageFilenames.Any()) { return true; }
+
+            var message = $"以下のファイルが不足しています。処理を継続しますか？\r\n{string.Join("\r\n", shortageFilenames)}";
+            var result = MessageBox.Show(message, "不足ファイルの確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var @continue = result == DialogResult.Yes;
+
+            return @continue;
         }
 
         /// <summary>サウンド設定を開く</summary>
