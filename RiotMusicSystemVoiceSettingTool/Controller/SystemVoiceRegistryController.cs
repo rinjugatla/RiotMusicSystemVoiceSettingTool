@@ -121,6 +121,8 @@ namespace RiotMusicSystemVoiceSettingTool.Controller
             {
                 string registryPath = Path.Combine(RegistryPath(type), soundItemName);
                 string filepath = Path.Combine(directoryPath, model.VoiceFileName(type));
+                if (!File.Exists(filepath)) { continue; }
+
                 try
                 {
                     using (var key = Registry.CurrentUser.OpenSubKey(registryPath, true))
@@ -138,6 +140,8 @@ namespace RiotMusicSystemVoiceSettingTool.Controller
             {
                 string registryPath = Path.Combine(RegistryPath(type), soundItemName);
                 string filepath = Path.Combine(directoryPath, model.VoiceFileName(type));
+                if (!File.Exists(filepath)) { continue; }
+
                 try
                 {
                     using (var key = Registry.CurrentUser.OpenSubKey(registryPath, true))
