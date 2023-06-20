@@ -104,5 +104,11 @@ namespace RiotMusicSystemVoiceSettingTool
             MessageBox.Show("システムボイスの登録が完了しました。", "システムボイスの登録", 
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        /// <summary>サウンド設定を開く</summary>
+        private void OpenSoundWindow_Button_Click(object sender, EventArgs e)
+        {
+            Process.Start("control.exe", "/name Microsoft.Sound /page 2");
+        }
     }
 }

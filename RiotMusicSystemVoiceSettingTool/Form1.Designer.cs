@@ -37,9 +37,10 @@
             this.SystemVoiceDirectoryBrowse_Button = new System.Windows.Forms.Button();
             this.SystemVoiceRegister_Button = new System.Windows.Forms.Button();
             this.UseDefaultSystemSound_CheckBox = new System.Windows.Forms.CheckBox();
-            this.SystemVoiceRegisterName_PlaceholderTextBox = new RiotMusicSystemVoiceSettingTool.CustomControll.PlaceholderTextBox();
             this.ErrorLog_GroupBox = new System.Windows.Forms.GroupBox();
             this.ErrorLog_TextBox = new System.Windows.Forms.TextBox();
+            this.SystemVoiceRegisterName_PlaceholderTextBox = new RiotMusicSystemVoiceSettingTool.CustomControll.PlaceholderTextBox();
+            this.OpenSoundWindow_Button = new System.Windows.Forms.Button();
             this.ErrorLog_GroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,9 +111,9 @@
             // 
             // SystemVoiceRegister_Button
             // 
-            this.SystemVoiceRegister_Button.Location = new System.Drawing.Point(438, 89);
+            this.SystemVoiceRegister_Button.Location = new System.Drawing.Point(501, 88);
             this.SystemVoiceRegister_Button.Name = "SystemVoiceRegister_Button";
-            this.SystemVoiceRegister_Button.Size = new System.Drawing.Size(138, 23);
+            this.SystemVoiceRegister_Button.Size = new System.Drawing.Size(75, 23);
             this.SystemVoiceRegister_Button.TabIndex = 6;
             this.SystemVoiceRegister_Button.Text = "登録";
             this.SystemVoiceRegister_Button.UseVisualStyleBackColor = true;
@@ -121,21 +122,12 @@
             // UseDefaultSystemSound_CheckBox
             // 
             this.UseDefaultSystemSound_CheckBox.AutoSize = true;
-            this.UseDefaultSystemSound_CheckBox.Location = new System.Drawing.Point(96, 93);
+            this.UseDefaultSystemSound_CheckBox.Location = new System.Drawing.Point(39, 91);
             this.UseDefaultSystemSound_CheckBox.Name = "UseDefaultSystemSound_CheckBox";
             this.UseDefaultSystemSound_CheckBox.Size = new System.Drawing.Size(339, 16);
             this.UseDefaultSystemSound_CheckBox.TabIndex = 8;
             this.UseDefaultSystemSound_CheckBox.Text = "システムボイスが存在しない場合はデフォルトシステムサウンドを使用";
             this.UseDefaultSystemSound_CheckBox.UseVisualStyleBackColor = true;
-            // 
-            // SystemVoiceRegisterName_PlaceholderTextBox
-            // 
-            this.SystemVoiceRegisterName_PlaceholderTextBox.Location = new System.Drawing.Point(96, 63);
-            this.SystemVoiceRegisterName_PlaceholderTextBox.Name = "SystemVoiceRegisterName_PlaceholderTextBox";
-            this.SystemVoiceRegisterName_PlaceholderTextBox.PlaceholderColor = System.Drawing.Color.Empty;
-            this.SystemVoiceRegisterName_PlaceholderTextBox.PlaceholderText = "半角英数字で入力してください";
-            this.SystemVoiceRegisterName_PlaceholderTextBox.Size = new System.Drawing.Size(480, 19);
-            this.SystemVoiceRegisterName_PlaceholderTextBox.TabIndex = 7;
             // 
             // ErrorLog_GroupBox
             // 
@@ -156,12 +148,32 @@
             this.ErrorLog_TextBox.Size = new System.Drawing.Size(550, 227);
             this.ErrorLog_TextBox.TabIndex = 0;
             // 
+            // SystemVoiceRegisterName_PlaceholderTextBox
+            // 
+            this.SystemVoiceRegisterName_PlaceholderTextBox.Location = new System.Drawing.Point(96, 63);
+            this.SystemVoiceRegisterName_PlaceholderTextBox.Name = "SystemVoiceRegisterName_PlaceholderTextBox";
+            this.SystemVoiceRegisterName_PlaceholderTextBox.PlaceholderColor = System.Drawing.Color.Empty;
+            this.SystemVoiceRegisterName_PlaceholderTextBox.PlaceholderText = "半角英数字で入力してください";
+            this.SystemVoiceRegisterName_PlaceholderTextBox.Size = new System.Drawing.Size(480, 19);
+            this.SystemVoiceRegisterName_PlaceholderTextBox.TabIndex = 7;
+            // 
+            // OpenSoundWindow_Button
+            // 
+            this.OpenSoundWindow_Button.Location = new System.Drawing.Point(384, 88);
+            this.OpenSoundWindow_Button.Name = "OpenSoundWindow_Button";
+            this.OpenSoundWindow_Button.Size = new System.Drawing.Size(111, 23);
+            this.OpenSoundWindow_Button.TabIndex = 6;
+            this.OpenSoundWindow_Button.Text = "サウンド設定を開く";
+            this.OpenSoundWindow_Button.UseVisualStyleBackColor = true;
+            this.OpenSoundWindow_Button.Click += new System.EventHandler(this.OpenSoundWindow_Button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 378);
             this.Controls.Add(this.ErrorLog_GroupBox);
+            this.Controls.Add(this.OpenSoundWindow_Button);
             this.Controls.Add(this.UseDefaultSystemSound_CheckBox);
             this.Controls.Add(this.SystemVoiceRegisterName_PlaceholderTextBox);
             this.Controls.Add(this.SystemVoiceRegister_Button);
@@ -197,6 +209,7 @@
         private System.Windows.Forms.CheckBox UseDefaultSystemSound_CheckBox;
         private System.Windows.Forms.GroupBox ErrorLog_GroupBox;
         private System.Windows.Forms.TextBox ErrorLog_TextBox;
+        private System.Windows.Forms.Button OpenSoundWindow_Button;
     }
 }
 
