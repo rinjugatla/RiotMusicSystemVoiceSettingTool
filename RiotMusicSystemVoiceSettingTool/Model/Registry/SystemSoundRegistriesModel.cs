@@ -92,5 +92,37 @@ namespace RiotMusicSystemVoiceSettingTool.Model.Registry
             }
             ExplorerSoundRegistries.Add(type, model);
         }
+
+        /// <summary>登録済みのレジストリ設定を取得</summary>
+        public RegistryModel GetRegistrySetting(WindowsSoundType type, SystemSoundRegistryType registryType)
+        {
+            if (!WindowsSoundRegistries.ContainsKey(type)) { return null; }
+
+            switch (registryType)
+            {
+                case SystemSoundRegistryType.Default:
+                    return WindowsSoundRegistries[type].Default;
+                case SystemSoundRegistryType.Current:
+                    return WindowsSoundRegistries[type].Current;
+                default:
+                    return null;
+            }
+        }
+
+        /// <summary>登録済みのレジストリ設定を取得</summary>
+        public RegistryModel GetRegistrySetting(ExplorerSoundType type, SystemSoundRegistryType registryType)
+        {
+            if (!ExplorerSoundRegistries.ContainsKey(type)) { return null; }
+
+            switch (registryType)
+            {
+                case SystemSoundRegistryType.Default:
+                    return ExplorerSoundRegistries[type].Default;
+                case SystemSoundRegistryType.Current:
+                    return ExplorerSoundRegistries[type].Current;
+                default:
+                    return null;
+            }
+        }
     }
 }

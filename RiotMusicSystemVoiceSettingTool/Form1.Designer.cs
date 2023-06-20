@@ -37,6 +37,7 @@
             this.SystemVoiceDirectoryBrowse_Button = new System.Windows.Forms.Button();
             this.SystemVoiceRegister_Button = new System.Windows.Forms.Button();
             this.SystemVoiceRegisterName_PlaceholderTextBox = new RiotMusicSystemVoiceSettingTool.CustomControll.PlaceholderTextBox();
+            this.UseDefaultSystemSound_CheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // SystemVoiceSelect_ComboBox
@@ -123,11 +124,22 @@
             this.SystemVoiceRegisterName_PlaceholderTextBox.Size = new System.Drawing.Size(480, 19);
             this.SystemVoiceRegisterName_PlaceholderTextBox.TabIndex = 7;
             // 
+            // UseDefaultSystemSound_CheckBox
+            // 
+            this.UseDefaultSystemSound_CheckBox.AutoSize = true;
+            this.UseDefaultSystemSound_CheckBox.Location = new System.Drawing.Point(96, 93);
+            this.UseDefaultSystemSound_CheckBox.Name = "UseDefaultSystemSound_CheckBox";
+            this.UseDefaultSystemSound_CheckBox.Size = new System.Drawing.Size(339, 16);
+            this.UseDefaultSystemSound_CheckBox.TabIndex = 8;
+            this.UseDefaultSystemSound_CheckBox.Text = "システムボイスが存在しない場合はデフォルトシステムサウンドを使用";
+            this.UseDefaultSystemSound_CheckBox.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 125);
+            this.Controls.Add(this.UseDefaultSystemSound_CheckBox);
             this.Controls.Add(this.SystemVoiceRegisterName_PlaceholderTextBox);
             this.Controls.Add(this.SystemVoiceRegister_Button);
             this.Controls.Add(this.SystemVoiceDirectoryBrowse_Button);
@@ -155,6 +167,7 @@
         private System.Windows.Forms.Button SystemVoiceDirectoryBrowse_Button;
         private System.Windows.Forms.Button SystemVoiceRegister_Button;
         private CustomControll.PlaceholderTextBox SystemVoiceRegisterName_PlaceholderTextBox;
+        private System.Windows.Forms.CheckBox UseDefaultSystemSound_CheckBox;
     }
 }
 

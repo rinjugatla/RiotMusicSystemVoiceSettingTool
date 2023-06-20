@@ -94,8 +94,8 @@ namespace RiotMusicSystemVoiceSettingTool
                 return;
             }
 
-            
-            registryController.RegistSystemVoice(directoryPath, registryKeyName, CurrentSelectVoice);
+            bool useDefaltSound = UseDefaultSystemSound_CheckBox.Checked;
+            registryController.RegistSystemVoice(useDefaltSound, directoryPath, registryKeyName, CurrentSelectVoice);
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using static RiotMusicSystemVoiceSettingTool.Model.Registry.SystemSoundRegistryBaseModel;
 using static RiotMusicSystemVoiceSettingTool.Model.SystemSoundModel;
 
 namespace RiotMusicSystemVoiceSettingTool.Controller
@@ -35,10 +36,12 @@ namespace RiotMusicSystemVoiceSettingTool.Controller
         }
 
         /// <summary>システムボイスをレジストリに登録</summary>
+        /// <param name="useDefaultSound"></param>
         /// <param name="directoryPath">システムボイス配置フォルダ</param>
         /// <param name="soundItemName">サウンド選択項目名(mionaなど)</param>
         /// <param name="model">ボイスモデル</param>
-        public void RegistSystemVoice(string directoryPath, string soundItemName, ActorBaseModel model)
+        public void RegistSystemVoice(bool useDefaultSound, string directoryPath, 
+                                      string soundItemName, ActorBaseModel model)
         {
             try
             {
@@ -51,6 +54,8 @@ namespace RiotMusicSystemVoiceSettingTool.Controller
             }
 
             RegistRegistryKeys(soundItemName);
+
+            if (useDefaultSound) { RegistDefaultSystemSoundPath(soundItemName); }
             RegistSystemVoicePaths(directoryPath, soundItemName, model);
         }
 
@@ -68,6 +73,56 @@ namespace RiotMusicSystemVoiceSettingTool.Controller
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        /// <summary>デフォルトサウンドパスを登録</summary>
+        /// <param name="soundItemName">サウンド選択項目名(mionaなど)</param>
+        private void RegistDefaultSystemSoundPath(string soundItemName)
+        {
+            List<string> errors = new List<string>();
+            foreach (WindowsSoundType type in Enum.GetValues(typeof(WindowsSoundType)))
+            {
+                try
+                {
+                    var setting = SoundRegistries.GetRegistrySetting(type, SystemSoundRegistryType.Default);
+                    if (setting == null) { continue; }
+
+                    var filepath = setting.Value;
+                    if (!File.Exists(filepath)) { continue; }
+
+                    string registryPath = Path.Combine(RegistryPath(type), soundItemName);
+                    using (var key = Registry.CurrentUser.CreateSubKey(registryPath))
+                    {
+                        key.SetValue(null, filepath);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    errors.Add($"{type} {ex.Message}");
+                }
+            }
+
+            foreach (ExplorerSoundType type in Enum.GetValues(typeof(ExplorerSoundType)))
+            {
+                try
+                {
+                    var setting = SoundRegistries.GetRegistrySetting(type, SystemSoundRegistryType.Default);
+                    if (setting == null) { continue; }
+
+                    var filepath = setting.Value;
+                    if (!File.Exists(filepath)) { continue; }
+
+                    string registryPath = Path.Combine(RegistryPath(type), soundItemName);
+                    using (var key = Registry.CurrentUser.CreateSubKey(registryPath))
+                    {
+                        key.SetValue(null, filepath);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    errors.Add($"{type} {ex.Message}");
+                }
             }
         }
 
