@@ -40,27 +40,32 @@ namespace RiotMusicSystemVoiceSettingTool.Controller
         /// <param name="directoryPath">システムボイス配置フォルダ</param>
         /// <param name="soundItemName">サウンド選択項目名(mionaなど)</param>
         /// <param name="model">ボイスモデル</param>
-        public void RegistSystemVoice(bool useDefaultSound, string directoryPath, 
+        /// <returns>エラー</returns>
+        public string RegistSystemVoice(bool useDefaultSound, string directoryPath, 
                                       string soundItemName, ActorBaseModel model)
         {
-            try
+            List<string> errors = new List<string>();
+            string actorError =  RegistActorName(soundItemName);
+            errors.Add(actorError);
+
+            string registKeyError = RegistRegistryKeys(soundItemName);
+            errors.Add(registKeyError);
+
+            if (useDefaultSound)
             {
-                RegistActorName(soundItemName);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"サウンド項目名の登録に失敗しました。\r\n詳細: {ex.Message}", "サウンド項目名の登録", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string registDefaultError = RegistDefaultSystemSoundPath(soundItemName);
+                errors.Add(registDefaultError);
             }
 
-            RegistRegistryKeys(soundItemName);
+            string registVoiceError = RegistSystemVoicePaths(directoryPath, soundItemName, model);
+            errors.Add(registVoiceError);
 
-            if (useDefaultSound) { RegistDefaultSystemSoundPath(soundItemName); }
-            RegistSystemVoicePaths(directoryPath, soundItemName, model);
+            var result = string.Join("\r\n----------\r\n", errors.Where(e => e != null));
+            return result;
         }
 
         /// <summary>サウンド選択項目を登録</summary>
-        private void RegistActorName(string soundItemName)
+        private string RegistActorName(string soundItemName)
         {
             try
             {
@@ -70,15 +75,17 @@ namespace RiotMusicSystemVoiceSettingTool.Controller
                     key.SetValue(null, soundItemName);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return $"サウンド選択項目の登録に失敗しました。{ex.Message}";
             }
+
+            return null;
         }
 
         /// <summary>デフォルトサウンドパスを登録</summary>
         /// <param name="soundItemName">サウンド選択項目名(mionaなど)</param>
-        private void RegistDefaultSystemSoundPath(string soundItemName)
+        private string RegistDefaultSystemSoundPath(string soundItemName)
         {
             List<string> errors = new List<string>();
             foreach (WindowsSoundType type in Enum.GetValues(typeof(WindowsSoundType)))
@@ -124,11 +131,17 @@ namespace RiotMusicSystemVoiceSettingTool.Controller
                     errors.Add($"{type} {ex.Message}");
                 }
             }
+
+            if (!errors.Any()) { return null; }
+
+            var message = string.Join("\r\n", errors);
+            var result = $"以下のデフォルトサウンドの設定に失敗しました。\r\n{message}";
+            return result;
         }
 
         /// <summary>レジストリキーを作成</summary>
         /// <param name="soundItemName">サウンド選択項目名(mionaなど)</param>
-        private void RegistRegistryKeys(string soundItemName)
+        private string RegistRegistryKeys(string soundItemName)
         {
             List<string> errors = new List<string>();
             foreach (WindowsSoundType type in Enum.GetValues(typeof(WindowsSoundType)))
@@ -157,19 +170,18 @@ namespace RiotMusicSystemVoiceSettingTool.Controller
                 }
             }
 
-            if (errors.Any())
-            {
-                string message = string.Join("\r\n", errors);
-                MessageBox.Show($"以下のレジストリキーの登録に失敗しました。\r\n{message}", "レジストリキーの登録",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            if (!errors.Any()) { return null; }
+
+            var message = string.Join("\r\n", errors);
+            var result = $"以下のレジストリキーの登録に失敗しました。\r\n{message}";
+            return result;
         }
 
         /// <summary>システムボイスをレジストリに登録</summary>
         /// <param name="directoryPath">システムボイス配置フォルダ</param>
         /// <param name="soundItemName">サウンド選択項目名(mionaなど)</param>
         /// <param name="model">ボイスモデル</param>
-        private void RegistSystemVoicePaths(string directoryPath, string soundItemName, ActorBaseModel model)
+        private string RegistSystemVoicePaths(string directoryPath, string soundItemName, ActorBaseModel model)
         {
             List<string> errors = new List<string>();
             foreach (WindowsSoundType type in model.ExistsVoiceWindowsSoundType())
@@ -210,12 +222,11 @@ namespace RiotMusicSystemVoiceSettingTool.Controller
                 }
             }
 
-            if (errors.Any())
-            {
-                string message = string.Join("\n", errors);
-                MessageBox.Show($"以下の音声ファイルパスの登録に失敗しました。\r\n{message}", "音声ファイルパスの登録",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            if (!errors.Any()) { return null; }
+
+            var message = string.Join("\r\n", errors);
+            var result = $"以下のボイスファイルパスの登録に失敗しました。\r\n{message}";
+            return result;
         }
     }
 }

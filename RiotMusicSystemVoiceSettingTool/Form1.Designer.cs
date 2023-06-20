@@ -38,6 +38,9 @@
             this.SystemVoiceRegister_Button = new System.Windows.Forms.Button();
             this.UseDefaultSystemSound_CheckBox = new System.Windows.Forms.CheckBox();
             this.SystemVoiceRegisterName_PlaceholderTextBox = new RiotMusicSystemVoiceSettingTool.CustomControll.PlaceholderTextBox();
+            this.ErrorLog_GroupBox = new System.Windows.Forms.GroupBox();
+            this.ErrorLog_TextBox = new System.Windows.Forms.TextBox();
+            this.ErrorLog_GroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // SystemVoiceSelect_ComboBox
@@ -134,11 +137,31 @@
             this.SystemVoiceRegisterName_PlaceholderTextBox.Size = new System.Drawing.Size(480, 19);
             this.SystemVoiceRegisterName_PlaceholderTextBox.TabIndex = 7;
             // 
+            // ErrorLog_GroupBox
+            // 
+            this.ErrorLog_GroupBox.Controls.Add(this.ErrorLog_TextBox);
+            this.ErrorLog_GroupBox.Location = new System.Drawing.Point(14, 115);
+            this.ErrorLog_GroupBox.Name = "ErrorLog_GroupBox";
+            this.ErrorLog_GroupBox.Size = new System.Drawing.Size(562, 251);
+            this.ErrorLog_GroupBox.TabIndex = 9;
+            this.ErrorLog_GroupBox.TabStop = false;
+            this.ErrorLog_GroupBox.Text = "ログ";
+            // 
+            // ErrorLog_TextBox
+            // 
+            this.ErrorLog_TextBox.Location = new System.Drawing.Point(6, 18);
+            this.ErrorLog_TextBox.Multiline = true;
+            this.ErrorLog_TextBox.Name = "ErrorLog_TextBox";
+            this.ErrorLog_TextBox.ReadOnly = true;
+            this.ErrorLog_TextBox.Size = new System.Drawing.Size(550, 227);
+            this.ErrorLog_TextBox.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 125);
+            this.ClientSize = new System.Drawing.Size(594, 378);
+            this.Controls.Add(this.ErrorLog_GroupBox);
             this.Controls.Add(this.UseDefaultSystemSound_CheckBox);
             this.Controls.Add(this.SystemVoiceRegisterName_PlaceholderTextBox);
             this.Controls.Add(this.SystemVoiceRegister_Button);
@@ -153,6 +176,8 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "RiotMusicシステムボイス設定ツール";
+            this.ErrorLog_GroupBox.ResumeLayout(false);
+            this.ErrorLog_GroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,6 +195,8 @@
         private System.Windows.Forms.Button SystemVoiceRegister_Button;
         private CustomControll.PlaceholderTextBox SystemVoiceRegisterName_PlaceholderTextBox;
         private System.Windows.Forms.CheckBox UseDefaultSystemSound_CheckBox;
+        private System.Windows.Forms.GroupBox ErrorLog_GroupBox;
+        private System.Windows.Forms.TextBox ErrorLog_TextBox;
     }
 }
 

@@ -75,6 +75,9 @@ namespace RiotMusicSystemVoiceSettingTool
         /// <summary>システムボイスを登録</summary>
         private void SystemVoiceRegister_Button_Click(object sender, EventArgs e)
         {
+            // 初期化
+            ErrorLog_TextBox.Text = "";
+
             var registryController = new SystemVoiceRegistryController();
             registryController.ReadRegistrySetting();
 
@@ -95,7 +98,8 @@ namespace RiotMusicSystemVoiceSettingTool
             }
 
             bool useDefaltSound = UseDefaultSystemSound_CheckBox.Checked;
-            registryController.RegistSystemVoice(useDefaltSound, directoryPath, registryKeyName, CurrentSelectVoice);
+            string error = registryController.RegistSystemVoice(useDefaltSound, directoryPath, registryKeyName, CurrentSelectVoice);
+            ErrorLog_TextBox.Text = error;
 
             MessageBox.Show("システムボイスの登録が完了しました。", "システムボイスの登録", 
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
