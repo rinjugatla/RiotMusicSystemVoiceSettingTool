@@ -36,8 +36,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.SystemVoiceDirectoryBrowse_Button = new System.Windows.Forms.Button();
             this.SystemVoiceRegister_Button = new System.Windows.Forms.Button();
-            this.SystemVoiceRegisterName_PlaceholderTextBox = new RiotMusicSystemVoiceSettingTool.CustomControll.PlaceholderTextBox();
             this.UseDefaultSystemSound_CheckBox = new System.Windows.Forms.CheckBox();
+            this.SystemVoiceRegisterName_PlaceholderTextBox = new RiotMusicSystemVoiceSettingTool.CustomControll.PlaceholderTextBox();
             this.SuspendLayout();
             // 
             // SystemVoiceSelect_ComboBox
@@ -115,15 +115,6 @@
             this.SystemVoiceRegister_Button.UseVisualStyleBackColor = true;
             this.SystemVoiceRegister_Button.Click += new System.EventHandler(this.SystemVoiceRegister_Button_Click);
             // 
-            // SystemVoiceRegisterName_PlaceholderTextBox
-            // 
-            this.SystemVoiceRegisterName_PlaceholderTextBox.Location = new System.Drawing.Point(96, 63);
-            this.SystemVoiceRegisterName_PlaceholderTextBox.Name = "SystemVoiceRegisterName_PlaceholderTextBox";
-            this.SystemVoiceRegisterName_PlaceholderTextBox.PlaceholderColor = System.Drawing.Color.Empty;
-            this.SystemVoiceRegisterName_PlaceholderTextBox.PlaceholderText = "半角英数字で入力してください";
-            this.SystemVoiceRegisterName_PlaceholderTextBox.Size = new System.Drawing.Size(480, 19);
-            this.SystemVoiceRegisterName_PlaceholderTextBox.TabIndex = 7;
-            // 
             // UseDefaultSystemSound_CheckBox
             // 
             this.UseDefaultSystemSound_CheckBox.AutoSize = true;
@@ -133,6 +124,15 @@
             this.UseDefaultSystemSound_CheckBox.TabIndex = 8;
             this.UseDefaultSystemSound_CheckBox.Text = "システムボイスが存在しない場合はデフォルトシステムサウンドを使用";
             this.UseDefaultSystemSound_CheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SystemVoiceRegisterName_PlaceholderTextBox
+            // 
+            this.SystemVoiceRegisterName_PlaceholderTextBox.Location = new System.Drawing.Point(96, 63);
+            this.SystemVoiceRegisterName_PlaceholderTextBox.Name = "SystemVoiceRegisterName_PlaceholderTextBox";
+            this.SystemVoiceRegisterName_PlaceholderTextBox.PlaceholderColor = System.Drawing.Color.Empty;
+            this.SystemVoiceRegisterName_PlaceholderTextBox.PlaceholderText = "半角英数字で入力してください";
+            this.SystemVoiceRegisterName_PlaceholderTextBox.Size = new System.Drawing.Size(480, 19);
+            this.SystemVoiceRegisterName_PlaceholderTextBox.TabIndex = 7;
             // 
             // Form1
             // 
@@ -149,6 +149,8 @@
             this.Controls.Add(this.SystemVoiceSele_LinkLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SystemVoiceSelect_ComboBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "RiotMusicシステムボイス設定ツール";
             this.ResumeLayout(false);
