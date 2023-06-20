@@ -47,10 +47,14 @@ namespace RiotMusicSystemVoiceSettingTool
         {
             var combo = sender as ComboBox;
             var current = combo.SelectedItem as ActorBaseModel;
-            if(current == null) { return; }
+            if (current == null) { return; }
 
             CurrentSelectVoice = current;
             SystemVoiceRegisterName_PlaceholderTextBox.Text = current.DefaultRegistryKey;
+
+            // 未対応の声優の場合は登録ボタンを無効化
+            bool isValidActor = CurrentSelectVoice.Actor == ActorBaseModel.ActorType.Miona || CurrentSelectVoice.Actor == ActorBaseModel.ActorType.Anko;
+            SystemVoiceRegister_Button.Enabled = isValidActor;
         }
 
         /// <summary>ボイス販売ページに遷移</summary>
