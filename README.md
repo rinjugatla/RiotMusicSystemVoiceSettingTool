@@ -2,6 +2,10 @@
 
 [Blitz Wing システムボイス](https://riotmusic.store/collections/2305-bw-system-voice)の導入を補助します。
 
+## 動作環境
+
+1. Windows 10, 11
+
 ## 注意
 
 1. 管理者権限のあるユーザで実行してください。
