@@ -62,8 +62,7 @@ namespace RiotMusicSystemVoiceSettingTool
             SystemVoiceRegisterName_PlaceholderTextBox.Text = current.DefaultRegistryKey;
 
             // 未対応の声優の場合は登録ボタンを無効化
-            bool isValidActor = CurrentSelectVoice.Actor == ActorBaseModel.ActorType.Miona || CurrentSelectVoice.Actor == ActorBaseModel.ActorType.Anko;
-            SystemVoiceRegister_Button.Enabled = isValidActor;
+            SystemVoiceRegister_Button.Enabled = CurrentSelectVoice.IsSupport;
         }
 
         /// <summary>ボイス販売ページに遷移</summary>
@@ -99,7 +98,6 @@ namespace RiotMusicSystemVoiceSettingTool
             var directoryPath = SystemVoiceDirectory_TextBox.Text;
             bool isValidDirectoryPath = IsValidSystemVoiceDirectryPath(directoryPath);
             if (!isValidDirectoryPath) { return; }
-
 
             string registryKeyName = SystemVoiceRegisterName_PlaceholderTextBox.Text;
             bool isVliadRegistryKeyName = IsValidRegistryKeyName(registryKeyName);

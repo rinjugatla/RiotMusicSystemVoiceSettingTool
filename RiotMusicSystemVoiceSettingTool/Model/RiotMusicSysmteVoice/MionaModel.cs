@@ -10,11 +10,11 @@ namespace RiotMusicSystemVoiceSettingTool.Model.RiotMusicSysmteVoice
     {
         public MionaModel()
         {
-            Actor = ActorType.Miona;
             FullName = "皇美緒奈";
             ShortName = "美緒奈";
             StoreUrlPostfix = "2305-bw-system-voice-miona";
             DefaultRegistryKey = "miona";
+            IsSupport = true;
         }
     }
 }

@@ -3,27 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static RiotMusicSystemVoiceSettingTool.Model.SystemSoundModel;
 
 namespace RiotMusicSystemVoiceSettingTool.Model.RiotMusicSysmteVoice
 {
     internal class ActorBaseModel
     {
-        /// <summary>ボイス担当者</summary>
-        public enum ActorType
-        {
-            /// <summary>道明寺ここあ</summary>
-            Cocoa,
-            /// <summary>松永依織</summary>
-            Iori,
-            /// <summary>皇美緒奈</summary>
-            Miona,
-            /// <summary>朝倉杏子</summary>
-            Anko
-        }
-
-        /// <summary>ボイス担当者</summary>
-        public ActorType Actor { get; protected set; }
         /// <summary>フルネーム</summary>
         public string FullName { get; protected set; }
         /// <summary>ファイル名用の短い名前</summary>
@@ -42,10 +28,13 @@ namespace RiotMusicSystemVoiceSettingTool.Model.RiotMusicSysmteVoice
         }
         /// <summary>既定のレジストリキー</summary>
         public string DefaultRegistryKey { get; protected set; }
+        /// <summary>ツールでサポートしているか</summary>
+        public bool IsSupport { get; protected set; }
 
         public override string ToString()
         {
-            if (Actor == ActorType.Cocoa || Actor == ActorType.Iori) { return $"(未対応){FullName}"; }
+            var prefix = IsSupport ? "" : "未対応";
+            var result = $"{prefix}{FullName}";
             return FullName;
         }
 
