@@ -14,7 +14,7 @@ namespace RiotMusicSystemVoiceSettingTool.Model.RiotMusicSysmteVoice
             ShortName = "ここあ";
             StoreUrlPostfix = "2305-bw-system-voice-cocoa";
             DefaultRegistryKey = "cocoa";
-            IsSupport = false;
+            IsSupport = true;
         }
     }
 }

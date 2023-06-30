@@ -33,7 +33,7 @@ namespace RiotMusicSystemVoiceSettingTool.Model.RiotMusicSysmteVoice
 
         public override string ToString()
         {
-            var prefix = IsSupport ? "" : "未対応";
+            var prefix = IsSupport ? "" : "(未対応)";
             var result = $"{prefix}{FullName}";
             return FullName;
         }
