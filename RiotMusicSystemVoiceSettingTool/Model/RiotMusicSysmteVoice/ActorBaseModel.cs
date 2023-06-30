@@ -35,7 +35,7 @@ namespace RiotMusicSystemVoiceSettingTool.Model.RiotMusicSysmteVoice
         {
             var prefix = IsSupport ? "" : "(未対応)";
             var result = $"{prefix}{FullName}";
-            return FullName;
+            return result;
         }
 
         /// <summary>システムボイスファイル名一覧</summary>
